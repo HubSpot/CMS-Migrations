@@ -1,0 +1,13 @@
+{% set day = content.publish_date_local_time.strftime('%e') %}
+     {% if day >= 4 and day <= 20 %}
+        {% set day = day + "th" %}
+     {% elif day >= 24 and day <= 30 %}
+        {% set day = day + "th" %}
+     {% elif day == 1 or day == 21 or day == 31 %}
+        {% set day = day + "st" %}
+     {% elif day == 2 or day == 22 %}
+        {% set day = day + "nd" %}
+     {% elif day == 3 or day == 23 %}
+        {% set day = day + "rd" %}
+     {% endif %}
+<span class='day'>{{ day }}</span>

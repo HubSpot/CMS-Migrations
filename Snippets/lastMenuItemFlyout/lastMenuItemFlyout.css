@@ -1,0 +1,8 @@
+/* Last menu item fly fix */
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul li:last-child.hs-item-has-children ul.hs-menu-children-wrapper{
+    left: auto;
+    right: 0px;
+}
+.hs-menu-wrapper.hs-menu-flow-horizontal > ul > li:last-child.hs-item-has-children > ul.hs-menu-children-wrapper li.hs-item-has-children ul.hs-menu-children-wrapper{
+    right: 100%;
+}

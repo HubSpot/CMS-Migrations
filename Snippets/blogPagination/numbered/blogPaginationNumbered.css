@@ -1,0 +1,44 @@
+/* Numbered Pagination */
+.blog-pagination {
+    display: block;
+    text-align: center;
+}
+.blog-pagination > div {
+    display: inline-block;
+}
+.blog-pagination-left {
+    text-align: right;
+}
+.blog-pagination-right {
+    text-align: left;
+}
+.blog-pagination a {
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+.blog-pagination a:hover,
+.blog-pagination a:focus {
+    background-color: #c8ecff;
+    text-decoration: none;
+}
+.blog-pagination a.elipses {
+    border: 0;
+}
+.blog-pagination a.active {
+    background-color: #f5f5f5;
+    color: #666;
+    pointer-events: none;
+    cursor: default;
+}
+.blog-pagination a.next-link,
+.blog-pagination a.prev-link {
+    background-color: #666;
+    color: #fff;
+}
+.blog-pagination a.next-link:hover,
+.blog-pagination a.prev-link:hover {
+    background-color: #008cd4;
+    color: #fff;
+}

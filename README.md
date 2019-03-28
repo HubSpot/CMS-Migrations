@@ -24,3 +24,5 @@ The first thing you can do to contribute to the CMS Migrations repository is to 
 
 ### Contributing Code
 The second thing you can do to contribute to the CMS Migrations repository is to submit new code snippets/modules or submit fixes/improvements on existing code in the repository by creating a pull request. You can create a pull request in GitHub by following along with the directions here: https://help.github.com/en/articles/creating-a-pull-request. A member of the HubSpot migrations team will review your pull request and determine whether or not to merge your commits to the base branch.
+
+Thank you to all who participate in helping us maintain high-quality standards with HubSpot Migrations.

@@ -1,6 +1,6 @@
 # Add Suffix to Blog Date
 
-**Purpose:** to add the suffix (e.g. the "th" in 13th) to the end of the number on a date in the blog tool
+**Purpose:** to add a suffix (e.g. the "th" in 13th) to the end of the number on a date in the blog tool
 
 ## Instructions 
 

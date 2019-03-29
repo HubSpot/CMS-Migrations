@@ -1,0 +1,65 @@
+{% macro post_listing(post) %}
+  <div class="related-post-item">
+    <div class="related-image"><img src="{{ post.featured_image }}" alt="{{ post.name }}"></div>
+    <div class="related-title"><a href="{{post.absolute_url}}">{{ post.name}}</a></div>
+  </div>  
+{% endmacro %}
+
+{% set slider_options = module.slider_options %}
+{{module.heading}}
+<div id="related-post-listing">
+  {% if content.topic_list %}
+<!--   Topic list -->
+    {% set max_posts = module.post_count %}{# Set the max number of related posts to be output to the page here #}
+    {% set post_list = [] %}
+    {% for topic in content.topic_list %}
+      {% set post_list = post_list + blog_recent_topic_posts(module.select_blog, topic.slug, (max_posts) ) %}
+      {% if loop.last %}
+        {% set post_list = post_list|sort(true, false, 'publish_date')|unique('name') %}
+        {% set i = 0 %}
+        {% if post_list|length < max_posts and module.default_to_recent_posts %}
+          {% set diff = max_posts - post_list|length %}
+          {% set post_list = post_list + blog_recent_posts(module.select_blog, diff)%}
+        {% endif %}
+        {% for post in post_list %}
+          {% if content.absolute_url != post.absolute_url and i < max_posts %}
+            {{ post_listing(post) }}
+            {% set i = i + 1 %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% elif module.default_to_recent_posts %} {# Default to a recent post listing if the current post has no topics #}
+<!--  fallback  -->
+    {% set max_posts = 4 %}
+    {% set post_list = blog_recent_posts(module.select_blog, (max_posts) ) %}
+    {% set i = 0 %}
+    {% for post in post_list %}
+      {% if content.absolute_url != post.absolute_url and i < max_posts %}
+        {{ post_listing(post) }}
+        {% set i = i + 1 %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
+{{require_css("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css")}}
+{{require_js("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js", "footer")}}
+{% require_js %}
+  <script>
+    $(document).ready(function() {
+      $('#related-post-listing').slick({
+        "autoplay":{{slider_options.autoplay}},
+        "autoplaySpeed":{{slider_options.autoplay_speed * 1000}},
+        "arrows":{{slider_options.show_arrows}},
+        "dots":{{slider_options.show_dots}},
+        "draggable":true,
+        "slidesToScroll":1,
+        "slidesToShow":{{slider_options.slides_to_show}},
+        "speed":{{slider_options.slide_transition_speed * 1000}},
+        "swipe":true,
+        "adaptiveHeight":{{slider_options.dynamic_height}},
+        "infinite":{{slider_options.infinite_scrolling}}
+      });
+    });
+  </script>
+{% end_require_js %}

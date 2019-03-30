@@ -2,6 +2,6 @@
 
 This Module can be used on a page or blog post.
 
-![alt text](https://github.com/jcutlah/relatedPostSlider/assets/moduleFieldOptions "Module Field Options")
+![alt text](https://raw.githubusercontent.com/HubSpot/CMS-Migrations/master/Modules/relatedPostSlider/assets/moduleFieldOptions.png "Module Field Options")
 
-![alt text](https://github.com/jcutlah/relatedPostSlider/assets/sliderOptionsFields "Slider Field Options")
+![alt text](https://raw.githubusercontent.com/HubSpot/CMS-Migrations/master/Modules/relatedPostSlider/assets/sliderOptionsFields.png "Slider Field Options")

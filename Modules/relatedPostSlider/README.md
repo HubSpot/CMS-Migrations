@@ -7,6 +7,6 @@ This Module can be used on a page or blog post, to display an unstyled slider of
   
   The below images show the required fields for this module:
 
-![Image of inline styling on media](../../../Assets/Images/post-slider-module-field-options.png)
+![Image of inline styling on media](../../Assets/Images/post-slider-module-field-options.png)
 
-![Image of inline styling on media](../../../Assets/Images/post-slider-option-fields.png)
+![Image of inline styling on media](../../Assets/Images/post-slider-option-fields.png)

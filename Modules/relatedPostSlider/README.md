@@ -7,6 +7,6 @@ This Module can be used on a page or blog post, to display an unstyled slider of
   
   The below images show the required fields for this module:
 
-![alt text](https://raw.githubusercontent.com/HubSpot/CMS-Migrations/master/Modules/relatedPostSlider/assets/moduleFieldOptions.png "Module Field Options")
+![Image of inline styling on media](../../../Assets/Images/post-slider-module-field-options.png)
 
-![alt text](https://raw.githubusercontent.com/HubSpot/CMS-Migrations/master/Modules/relatedPostSlider/assets/sliderOptionsFields.png "Slider Field Options")
+![Image of inline styling on media](../../../Assets/Images/post-slider-option-fields.png)

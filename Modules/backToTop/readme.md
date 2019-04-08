@@ -6,4 +6,4 @@ The module leverages a JavaScript debounce function to reduce the rate at which 
 
 The image below shows the required field for this module:
 
-![Image of inline styling on media](../../Assets/Images/back-to-top-field-options.png)
+![Image of inline styling on media](../../Assets/Images/backToTopFieldOptions.png)

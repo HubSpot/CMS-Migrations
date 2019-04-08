@@ -6,5 +6,5 @@ The background image is largely built based on the campaign monitor background i
 
 The image below shows the required fields for this module:
 
-![Image of inline styling on media](../../Assets/Images/email-background-image-field-options.png)
+![Image of inline styling on media](../../Assets/Images/emailBackgroundImageFieldOptions.png)
 )

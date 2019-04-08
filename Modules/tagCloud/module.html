@@ -1,0 +1,48 @@
+<div style="display: none;" id="topic-cloud"></div>
+{% set topics = blog_topics(module.select_blog, 250) %}
+{% set totalPosts = blog_total_post_count(module.select_blog) %}
+<div class="topic-cloud">
+{% for tag in topics|sort(tag.name) %}
+  {% set topic_post_list = blog_recent_topic_posts(module.select_blog, tag.slug, 250) %}
+  {% set num_topic_posts = topic_post_list|length %}
+  {% set percent = num_topic_posts / totalPosts * 100 %}
+  {% if percent > 10 %}
+  	{% set size = "huge" %}
+  {% elif percent > 7  %}
+  	{% set size = "large"%}
+  {% elif percent > 5 %}
+  	{% set size = "medium" %}
+  {% elif percent > 3 %}
+  	{% set size = "small" %}
+  {% else %}
+  	{% set size = "tiny" %}
+  {% endif %}
+  <span class="cloud {{size}}"> <a href="{{ blog_tag_url(module.select_blog, tag.slug) }}">{{tag}}</a> </span>
+{% endfor %}
+</div>
+{% require_css %}
+  <style>
+    .topic-cloud {
+      width: {{ module.cloud_width~"%" }};
+      margin: 0 auto;
+    }
+    .topic-cloud .cloud a {
+      text-decoration: none;
+    }
+    .huge {
+      font-size: {{ module.select_huge_font_size~"px" }};
+    }
+    .large {
+      font-size: {{ module.select_large_font_size~"px" }};
+    }
+    .medium {
+      font-size: {{ module.select_medium_font_size~"px" }};
+    }
+    .small {
+      font-size:  {{ module.select_small_font_size~"px" }};
+    }
+    .tiny {
+      font-size: {{ module.select_tiny_font_size~"px" }};
+    }
+  </style>
+{% end_require_css %}

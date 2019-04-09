@@ -1,0 +1,10 @@
+<span class="reading-minutes">
+    {% set initialPostWords = content.post_body|wordcount %}
+    {% set calculatedPostWords = (initialPostWords/100) * 100 %}
+    {% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+    {% set number = finishedPostWords|round %}
+    {% if number < 1 %}
+    {% else %}
+        {{ finishedPostWords|round }} minute read
+    {% endif %}
+</span>

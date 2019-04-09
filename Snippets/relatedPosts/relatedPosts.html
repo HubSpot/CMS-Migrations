@@ -1,0 +1,21 @@
+{% if content.topic_list %}
+  <h3>Related posts</h3>
+  {% set max_posts = 4 %}{# Set the max number of related posts to be output to the page here #}
+  {% set post_list = [] %}
+  {% for topic in content.topic_list %}
+    {% set post_list = post_list + blog_recent_topic_posts('default', topic.slug, max_posts + 1 ) %}
+    {% if loop.last %}
+      {% set post_list = post_list|sort(true, false, 'publish_date')|unique('name') %}
+      {% set i = 0 %}
+      {% for post in post_list %}
+        {% if content.absolute_url != post.absolute_url and i < max_posts %}
+          <div class="related-post-item">
+            <div class="related-image"><img src="{{ post.featured_image }}" alt="{{ post.name }}"></div>
+            <div class="related-title"><a href="{{post.absolute_url}}">{{ post.name}}</a></div>
+          </div>
+          {% set i = i + 1 %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

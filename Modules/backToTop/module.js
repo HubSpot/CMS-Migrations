@@ -1,5 +1,5 @@
 // Declarations
-var toTopButton = document.getElementById('toTopButton');
+var toTopButton = document.querySelector("button.back-to-top");
 
 function debounce(func, wait, immediate) {
   var timeout;
@@ -24,11 +24,12 @@ function scrollFunction() {
   }
 };
 
-// Event Listeners 
+// Event Listeners
 // Debounce takes in three params: Func to debounce, time to wait, if we should debounce immediately
 window.addEventListener('scroll', debounce(scrollFunction, 10, true));
 
 toTopButton.addEventListener("click", function(){
+  // $("html, body").animate({ scrollTop: 0 }, 600);
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
-}); 
+});

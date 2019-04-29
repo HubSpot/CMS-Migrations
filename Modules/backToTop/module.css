@@ -1,4 +1,4 @@
-#toTopButton {
+.back-to-top {
   background-color: #000;
   bottom: 20px;
   color: #fff;
@@ -9,6 +9,6 @@
   z-index: 9999999;
 }
 
-#toTopButton:hover {
+.back-to-top:hover {
   background-color: #000001;
 }

@@ -11,4 +11,4 @@ This issue happens when a blog grid is built using CSS floats and the heights fo
 
 If you're looking to simply fix the grid issue that can be seen in the image below, add in the part of the CSS snippet that corresponds with how many posts there are per row in your blog layout. Please be sure to adjust this for different breakpoints (e.g. tablet and mobile).
 
-![Image of inline styling on media](../../Assets/Images/blogGridClearfix.png)
+![Image of inline styling on media](../../Assets/Images/blogGridFix.png)

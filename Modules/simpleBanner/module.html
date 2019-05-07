@@ -1,0 +1,7 @@
+<div class="simple-banner" id="{{ name }}" {% if module.banner_options.background_type == "image" %}style="background-image: url('{{ module.banner_options.background_image.src }}');"{% elif module.banner_options.background_type == "color" %}style="background-color: {{ module.banner_options.color_field.color }};"{% endif %}>
+  <div class="banner-content">
+    {% for item in module.banner_content %}
+      <{{ item.header_type }}>{{ item.header_text }}</{{ item.header_type }}>
+    {% endfor %}
+  </div>
+</div>

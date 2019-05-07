@@ -1,4 +1,4 @@
-<div style="display: none;" id="topic-cloud"></div>
+<div style="display: none;" id="{{ name }}"></div>
 {% set topics = blog_topics(module.select_blog, 250) %}
 {% set totalPosts = blog_total_post_count(module.select_blog) %}
 <div class="topic-cloud">

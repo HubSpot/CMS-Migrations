@@ -1,0 +1,18 @@
+.banner {
+  overflow: hidden;
+  position: relative;
+}
+.banner .banner-video {
+  top: 50%;
+  left: 50%;
+  width: auto;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1;
+}
+
+.banner .banner-content {
+}

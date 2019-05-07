@@ -1,0 +1,97 @@
+{% macro post_listing(post, index, length) %}
+<!--############ HTML for each individual slide ##############-->
+  <div class="related-post-item">
+    <div class="related-image"><img src="{{ post.featured_image }}" alt="{{ post.name }}"></div>
+    <div class="related-title"><a href="{{post.absolute_url}}">{{ post.name}}</a></div>
+  </div>
+{% endmacro %}
+<!-- ################## end slide html ######################## -->
+
+<div id="{{name}}">
+  {% if module.include_heading %}
+    <span class="related-listing-header">{{module.heading}}</span>
+  {% endif %}
+  <div class="related-post-listing">
+  {% set slider_options = module.slider_options %}
+    {% if module.listing_type == "tag" %}
+    <!--########### Block #1 - If listing type 'tag' is selected in the module options, the following code will execute  -->
+      {% if module.tag_info.use_post_tags %}
+        {% set topic_listing = content.topic_list %}
+      {% else %}
+        {% set topic_listing = [{"slug": module.tag_info.select_tag}] %}
+      {% endif %}
+      {% set max_posts = module.post_count %}
+      {% set post_list = [] %}
+      {% for topic in topic_listing %}
+        {% set post_list = post_list + blog_recent_topic_posts(module.select_blog, topic.slug, (max_posts) ) %}
+        {% if loop.last %}
+          {% set post_list = post_list|sort(true, false, 'publish_date')|unique('name') %}
+          {% set i = 0 %}
+          {% for post in post_list %}
+            {% if content.absolute_url != post.absolute_url and i < max_posts %}
+              {% set i = i + 1 %}
+              {{ post_listing(post, i, post_list|length) }}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    {% elif module.listing_type == "recent" %}
+  <!--########### Block #2 - If listing type 'Recent Posts' is selected in the module options, the following code will execute  -->
+      {% set max_posts = module.post_count %}
+      {% set post_list = blog_recent_posts(module.select_blog, (max_posts) ) %}
+      {% set i = 0 %}
+      {% for post in post_list %}
+        {% if content.absolute_url != post.absolute_url and i < max_posts %}
+          {% set i = i + 1 %}
+          {{ post_listing(post, i, post_list|length) }}
+        {% endif %}
+      {% endfor %}
+    {% elif module.listing_type == "author" %}
+    <!--########### Block #3 - If listing type 'Author' is selected in the module options, the following code will execute  -->
+      {% if module.author_info.use_post_author %}
+        {% set author = content.blog_post_author.slug %}
+      {% else %}
+
+        {% set author = module.author_info.author_slug %}
+      {% endif %}
+      {% set max_posts = module.post_count %}
+      {% set post_list = blog_recent_author_posts(module.select_blog, author, (max_posts) ) %}
+      {% set i = 0 %}
+      {% for post in post_list %}
+        {% if content.absolute_url != post.absolute_url and i < max_posts %}
+          {% set i = i + 1 %}
+          {{ post_listing(post, i, post_list|length) }}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+{{require_css("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css")}}
+{{require_js("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js", "footer")}}
+{% require_js %}
+  <script>
+    $(document).ready(function() {
+      if ($('#{{name}} .related-post-listing').get(0).children.length > 0) {
+        $('#{{name}} .related-post-listing').slick({
+          "autoplay":{{slider_options.slider_options_.autoplay}},
+          "autoplaySpeed":{{slider_options.slider_options_.autoplay_speed * 1000}},
+          "arrows":{{slider_options.slider_options_.show_arrows}},
+          "dots":{{slider_options.slider_options_.show_dots}},
+          "draggable":true,
+          "slidesToScroll":1,
+          "slidesToShow":{{slider_options.slider_options_.slides_to_show}},
+          "speed":{{slider_options.slider_options_.slide_transition_speed * 1000}},
+          "swipe":true,
+          "adaptiveHeight":{{slider_options.slider_options_.dynamic_height}},
+          "infinite":{{slider_options.slider_options_.infinite_scrolling}}
+        });
+      } else {
+        $('#{{name}} .related-listing-header').attr('style','display: none;');
+      }
+      $('#{{name}} .related-post-listing').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+//         console.log(nextSlide, currentSlide);
+      });
+    });
+  </script>
+{% end_require_js %}

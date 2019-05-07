@@ -1,0 +1,26 @@
+<div class="banner" id="{{ name }}" {% if module.banner_options.background_type == "image" %}style="background-image: url('{{ module.banner_options.background_image.src }}');"{% elif module.banner_options.background_type == "color" %}style="background-color: {{ module.banner_options.color_field.color }};"{% endif %}>
+  {% if module.banner_options.background_type == "video" %}
+    <video autoplay muted loop class="banner-video">
+      <source src="{{ module.banner_options.video_file }}" type="video/mp4">
+    </video>
+  {% endif %}
+  <div class="banner-content">
+    {{ module.banner_content.banner_area_content }}
+    {% for item in module.banner_buttons %}
+      {% if item.button_type == "standard" %}
+      {% set href = item.link_field.url.href %}
+      {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      <a href="{{ href }}"
+        {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+        {% if item.link_field.no_follow %}rel="nofollow"{% endif %}
+        >
+        {{ item.button_text }}
+      </a>
+      {% elif item.button_type == "cta" %}
+        {% cta guid="{{ item.call_to_action }}" %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="button-module">
+	{% for item in module.button_group %}
+	  <div class="button-module-item">
+			{% if item.button_type == "standard" %}
+			{% set href = item.button_link.url.href %}
+			{% if item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+				{% set href = "mailto:" + href %}
+			{% endif %}
+	    <a href="{{ href }}" class="button-module-link" {% if item.button_link.open_in_new_tab %}target="_blank"{% endif %}
+		  {% if item.button_link.no_follow %}rel="nofollow"{% endif %}>
+				<div class="button-module-link-text">
+					{{ item.button_text }}
+				</div>
+			</a>
+			{% else %}
+				{% cta guid="{{ item.call_to_action }}" %}
+			{% endif %}
+		</div>
+	{% endfor %}
+</div>
+
+{% if not module.remove_styles %}
+	{% require_css %}
+		<style>
+			.button-module {
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -moz-flex;
+				display: -webkit-flex;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content:space-between;
+				max-width:700px;
+				margin:0 auto;
+			}
+			.button-module-item {
+				flex-wrap: wrap;
+				margin:10px;
+			}
+			a .button-module-link-text {
+				background-color: {{ module.adjust_css.button_css.global_button_color.color }};
+				font-size: {{ module.adjust_css.button_css.global_font_size }}px;
+				color: {{ module.adjust_css.button_css.global_font_color.color }};
+				border-radius: {{ module.adjust_css.button_css.global_border_radius }}px;
+				padding: {{ module.adjust_css.button_css.global_top_and_bottom_padding }}px {{ module.adjust_css.button_css.global_left_and_right_padding }}px;
+				transition: all .3s;
+			}
+			a:hover .button-module-link-text {
+				transition: all .3s;
+				filter: brightness(115%);
+			}
+			a.button-module-link {
+			text-decoration:none;
+			}
+			a .button-module-link-text {
+				font-family:sans-serif;
+				border: 0;
+				box-shadow: none;
+			}
+		</style>
+	{% end_require_css %}
+{% endif %}

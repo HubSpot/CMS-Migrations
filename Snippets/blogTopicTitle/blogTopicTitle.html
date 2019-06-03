@@ -1,5 +1,5 @@
 {% if topic %}
-    {% set string_to_split = content.title %}
+  {% set string_to_split = content.title %}
 	{% set newArray = string_to_split|split('|', 2) %}
 	{% for item in newArray %}
 		{% if loop.last %}

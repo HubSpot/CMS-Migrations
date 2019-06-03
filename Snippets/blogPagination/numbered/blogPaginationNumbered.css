@@ -1,10 +1,13 @@
-/* Numbered Pagination */
 .blog-pagination {
     display: block;
     text-align: center;
 }
 .blog-pagination > div {
     display: inline-block;
+}
+.blog-pagination a {
+    color: #000;
+    text-decoration: none;
 }
 .blog-pagination-left {
     text-align: right;
@@ -13,10 +16,10 @@
     text-align: left;
 }
 .blog-pagination a {
-    display: inline-block;
-    text-align: center;
     border-radius: 4px;
+    display: inline-block;
     padding: 5px 10px;
+    text-align: center;
 }
 .blog-pagination a:hover,
 .blog-pagination a:focus {
@@ -33,12 +36,16 @@
     cursor: default;
 }
 .blog-pagination a.next-link,
-.blog-pagination a.prev-link {
+.blog-pagination a.prev-link,
+.blog-pagination a.last-link,
+.blog-pagination a.first-link{
     background-color: #666;
     color: #fff;
 }
 .blog-pagination a.next-link:hover,
-.blog-pagination a.prev-link:hover {
+.blog-pagination a.prev-link:hover,
+.blog-pagination a.last-link:hover,
+.blog-pagination a.first-link:hover{
     background-color: #008cd4;
     color: #fff;
 }

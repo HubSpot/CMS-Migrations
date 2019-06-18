@@ -1,6 +1,6 @@
 # Debounce Function
 
-**Purpose:** you can use the debounce function to improve page performance when using taxing event listeners such as resize and scroll to reduce the amount of times the JavaScript function needs to fire.
+**Purpose:** you can use the debounce function to improve page performance when using taxing event listeners such as resize and scroll by reducing the amount of times the JavaScript function needs to fire.
 
 ## Resources
 

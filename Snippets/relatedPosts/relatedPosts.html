@@ -1,6 +1,6 @@
 {% if content.topic_list %}
   <h3>Related posts</h3>
-  {% set max_posts = 4 %}{# Set the max number of related posts to be output to the page here #}
+  {% set max_posts = 4 %}
   {% set post_list = [] %}
   {% for topic in content.topic_list %}
     {% set post_list = post_list + blog_recent_topic_posts('default', topic.slug, max_posts + 1 ) %}

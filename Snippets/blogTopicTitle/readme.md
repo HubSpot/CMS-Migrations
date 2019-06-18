@@ -1,17 +1,7 @@
 # Printing the Blog Topic Title on a Topic Page
 
-**Purpose:** to pull the topic name onto the corresponding topic page of a blog.
+**Purpose:** to get the topic name of a blog topic listing page and print it out onto the page.
 
 ## Instructions
 
-Add the following code inside of the {% if topic %} conditional where you want the topic title to show.
-
-```html
-{% set string_to_split = content.title %}
-{% set newArray = string_to_split|split('|', 2) %}
-{% for item in newArray %}
-	{% if loop.last %}
-		<h2 style="text-align: center;">{{ item }}</h2>
-	{% endif %}
-{% endfor %}
-```
+Add the code snippet in your blog listing HTML where you want your topic to display. You may also include this as part of a custom module that you can include on your blog listing template.

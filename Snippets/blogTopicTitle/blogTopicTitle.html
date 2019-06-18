@@ -3,7 +3,7 @@
 	{% set newArray = string_to_split|split('|', 2) %}
 	{% for item in newArray %}
 		{% if loop.last %}
-			<h2 style="text-align: center;">{{ item }}</h2>
+			<h2>{{ item }}</h2>
 		{% endif %}
 	{% endfor %}
 {% endif %}

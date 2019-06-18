@@ -1,9 +1,9 @@
 # Numbered Blog Pagination
 
-**Purpose:** to add basic numbered pagination to a HubSpot blog.
+**Purpose:** to add basic numbered pagination to a blog.
 
 ## Instructions
 
-Add this snippet in the blog listing template HTML outside of the main blog for loop where you want the pagination to show.
+Add this snippet in at the bottom of your blog listing HTML.
 
 ![Image of inline styling on media](../../../Assets/Images/blogNumberedPagination.png)

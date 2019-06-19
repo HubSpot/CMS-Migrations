@@ -1,0 +1,30 @@
+{% macro pagination_link(prev_or_next, post_position) %}
+<!--############ HTML for each pagination link ##############-->
+  {% if prev_or_next == "next" %}
+    {% set post_name = content.next_post_name %}
+    {% set featured_image = content.next_post_featured_image %}
+    {% set slug = content.next_post_slug %}
+  {% elif prev_or_next == "prev" %}
+    {% set post_name = content.previous_post_name %}
+    {% set featured_image = content.previous_post_featured_image %}
+    {% set slug = content.previous_post_slug %}
+  {% endif %}
+
+  <a href="{{group.absolute_url|replace("/"~group.slug,"")}}/{{slug}}">
+    <div class="pagination-link {{prev_or_next}} {{post_position}}">
+      {% if featured_image and module.show_featured_images %}<div class="pagination-featured-image"><img src="{{ featured_image }}" alt="{{ post_name }}"></div>{% endif %}
+      <div class="related-title">{{ post_name}}</div>
+    </div>
+  </a>
+{% endmacro %}
+
+{% if module.position_newer_posts == "left" %}
+  {% set prev_post_position = "right" %}
+{% elif module.position_newer_posts == "right" %}
+  {% set prev_post_position = "left" %}
+{% endif %}
+
+<div id='{{name}}' class="blog-post-pagination-wrapper">
+  {{ pagination_link("prev", prev_post_position) }}
+  {{ pagination_link("next", module.position_newer_posts) }}
+</div>

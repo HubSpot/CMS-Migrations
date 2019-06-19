@@ -1,0 +1,39 @@
+<div class="search-module-with-button">
+	<div class="hs-search-field">
+			<div class="hs-search-field__bar">
+				<form action="/{{ site_settings.content_search_results_page_path }}" id="hs-form-button-submit">
+					<input type="search" class="hs-search-field__input" name="term" autocomplete="off" placeholder="{{ module.search_options.placeholder }}">
+
+					{# Types are SITE_PAGE, LANDING_PAGE, BLOG_POST, LISTING_PAGE, KNOWLEDGE_ARTICLE #}
+					{% if module.content_type.landing_pages or module.content_type.knowledge_articles %}
+						<input type="hidden" name="type" value="SITE_PAGE">
+						<input type="hidden" name="type" value="BLOG_POST">
+						<input type="hidden" name="type" value="LISTING_PAGE">
+					{% endif %}
+					{% if module.content_type.landing_pages %}
+						<input type="hidden" name="type" value="LANDING_PAGE">
+					{% endif %}
+					{% if module.content_type.knowledge_articles %}
+						<input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+					{% endif %}
+
+					{% for item in module.additional_domains %}
+						<input type="hidden" name="domain" value="{{ item.include_domain }}">
+					{% endfor %}
+
+					{# Also may want to include an option to search across different domains on users account? Our search will only search for content in the domain they are in. We can use the &domain= parameter string. #}
+
+					{#
+					You can set additional search parameters by adding hidden inputs
+					like the example below. Both the typeahead and search results
+					modules will accept these, except 'limit' which only works for results.
+
+					<input type="hidden" name="limit" value="5">
+					#}
+
+					<button type="submit" form="hs-form-button-submit" value="Submit" class="hs-button primary" style="padding-top:2px;">{% if module.search_options.button_icon %}<svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 512 512"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/>{% endif %}{% if not module.search_options.button_icon %}{{ module.search_options.button_text }}{% endif %}</button>
+				</form>
+			</div>
+			<ul class="hs-search-field__suggestions"></ul>
+	</div>
+</div>

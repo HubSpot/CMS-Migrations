@@ -1,0 +1,14 @@
+.pricing-table .pricing-col {
+  float: left;
+}
+.pricing-table .pricing-col .features {
+  list-style: none;
+  padding-left: 0px;
+}
+.pricing-table .feature-odd {
+  background-color: #fff;
+}
+.pricing-table .feature-even {
+  background-color: rgba(23, 61, 80, 0.06);
+}
+.pricing-table .pricing-col.featured {}

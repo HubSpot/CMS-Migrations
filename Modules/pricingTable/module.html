@@ -1,0 +1,38 @@
+<div id="{{ name }}" class="pricing-table">
+ {% for item in module.pricing_column %}
+   {% set width = 100 / loop.length %}
+   <div class="pricing-col {% if item.is_featured %}featured{% endif %}" style="width: {{ width }}%;">
+     <div class="pricing-col-header">
+       <h2>{{ item.header }}</h2>
+       <div class="price">
+        <span class="currency">{{ item.currency }}</span>
+        <span class="price">{{ item.price }}</span>
+        <span class="duration">/{{ item.time_period }}</span>
+       </div>
+     </div>
+     <div class="pricing-col-body">
+       <ul class="features">
+         {% for feature in item.feature %}
+          <li class="{% cycle 'feature-odd','feature-even' %}">{{ feature }}</li>
+         {% endfor %}
+       </ul>
+     </div>
+     <div class="pricing-col-footer">
+       {% if item.button.button_type == "standard" %}
+         {% set href = item.button.link_field.url.href %}
+         {% if item.button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+         {% endif %}
+         <a href="{{ href }}"
+            {% if item.button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+            {% if item.button.link_field.no_follow %}rel="nofollow"{% endif %}
+            >
+           {{ item.button.button_text }}
+         </a>
+       {% elif item.button.button_type == "cta" %}
+        {% cta guid="{{ item.button.call_to_action }}" %}
+       {% endif %}
+     </div>
+   </div>
+ {% endfor %}
+</div>

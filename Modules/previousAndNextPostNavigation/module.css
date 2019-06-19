@@ -1,0 +1,12 @@
+.pagination-link.prev {
+  float: right;
+}
+.pagination-link.next {
+  float: left;
+}
+.pagination-link.right {
+  float: right;
+}
+.pagination-link.left {
+  float: left;
+}

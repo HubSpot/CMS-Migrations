@@ -1,0 +1,9 @@
+{% set my_tags = blog_tags('default', 250) %}
+<ul>
+	<li><a href="{{ group.absolute_url }}">All</a></li>
+	{% for item in my_tags %}
+	  <li {% if topic %}{% if content|attr('absolute_url') == blog_tag_url(group.id, item.slug) %}class="active"{% endif %}{% endif %}>
+			<a href="{{ blog_tag_url(group.id, item.slug) }}">{{ item }}</a>
+	  </li>
+	{% endfor %}
+</ul>

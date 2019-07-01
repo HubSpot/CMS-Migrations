@@ -7,7 +7,8 @@
         $container.imagesLoaded(function(){
                 $container.masonry({
                         // selector for entry content
-                        itemSelector: '.post-item'
+                        itemSelector: '.post-item',
+                        horizontalOrder: true,
                 });
         });
 

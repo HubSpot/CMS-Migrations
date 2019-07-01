@@ -6,7 +6,8 @@
 var $container = $('.post-listing');
 $container.imagesLoaded(function() {
     $container.masonry({
-        itemSelector: '.post-item'
+        itemSelector: '.post-item',
+        horizontalOrder: true,
     });
 });
 
@@ -16,7 +17,8 @@ var $container = $('.post-listing');
 $container.imagesLoaded(function() {
     $container.masonry({
         itemSelector: '.post-item',
-        gutter: 20
+        horizontalOrder: true,
+        gutter: 20,
     });
 });
 
